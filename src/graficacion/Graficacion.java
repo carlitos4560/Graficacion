@@ -13,6 +13,10 @@ public class Graficacion {
 
     /**
      * @param args the command line arguments
+     * Autor: Elizabeth Cussi Lopez
+     * Autor: Carlos Roberto Escobar Soria
+     * Materia: Graficacion por computadora
+     * Universidad: Mayor de San Simon
      */
     public static void main(String[] args) {
         // TODO code application logic here
