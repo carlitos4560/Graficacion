@@ -20,4 +20,6 @@ public class Triangulo extends Figura{
         this.x1 = x1;
         this.y2 = y2;
     }
+    public void calcular(){
+    }
 }

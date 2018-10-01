@@ -17,43 +17,54 @@ public class Circunferencia extends Figura{
         super(x, y, color);
         this.radio = radio;
     }
-    /*
-    private Point2D pointCenter;
-    private int radio;
-    private ArrayList<Point2D> points;
-    public CircleBresenham(Point2D pointCenter,int radio)
-    {
-        this.pointCenter = pointCenter;
-        this.radio = radio;
-        this.points = new ArrayList<Point2D>();
+    public Circunferencia(){
+        super(50,50,0);
+        this.radio = 25;
     }
-    
-    public CircleBresenham(){
-        this.pointCenter = null;
-        this.radio = 0;
-        this.points = new ArrayList<Point2D>();
-    }
-    
-    public ArrayList<Point2D> getPoint2DCircle(){
-        return this.points;
-    }
-    
-    public ArrayList<Point2D> calcule(){
-        int xc = pointCenter.getX();
-        int yc = pointCenter.getY();
+ 
+    @Override
+    public void calcular(){
+        int []aux;
+        int xc = super.punto[0];
+        int yc = super.punto[1];
         int x = this.radio;
         int y = 0;
         int e = 0;
         while(x >= y){
-            points.add(new Point2D((xc + x),(yc + y)));
-            points.add(new Point2D((xc + y),(yc + x)));
-            points.add(new Point2D((xc - x),(yc + y)));
-            points.add(new Point2D((xc - y),(yc + x)));
-
-            points.add(new Point2D((xc + x),(yc - y)));
-            points.add(new Point2D((xc + y),(yc - x)));
-            points.add(new Point2D((xc - x),(yc - y)));
-            points.add(new Point2D((xc - y),(yc - x)));
+            aux = new int[2];
+            aux[0]=(xc + x);
+            aux[1]=(yc + y);
+            super.puntos.add(aux);
+            aux = new int[2];
+            aux[0]= (xc + y);
+            aux[1]= (yc + x);
+            super.puntos.add(aux);
+            aux = new int[2];
+            aux[0]=(xc - x);
+            aux[1]=(yc + y);
+            super.puntos.add(aux);
+            aux = new int[2];
+            aux[0]=(xc - y);
+            aux[1]=(yc + x);
+            super.puntos.add(aux);
+            
+            aux = new int[2];
+            aux[0]=(xc + x);
+            aux[1]=(yc - y);
+            super.puntos.add(aux);
+            aux = new int[2];
+            aux[0]=(xc + y);
+            aux[1]=(yc - x);
+            super.puntos.add(aux);
+            aux = new int[2];
+            aux[0]= (xc - x);
+            aux[1]= (yc - y);
+            super.puntos.add(aux);
+            aux = new int[2];
+            aux[0]= (xc - y);
+            aux[1]= (yc - x);
+            super.puntos.add(aux);
+            
             e = e + (2*y) + 1;
             y = y+1;
             if((2 * e) > ((2*x)-1)){
@@ -62,6 +73,6 @@ public class Circunferencia extends Figura{
             }
         }        
         // claculo de todos los puntos de la cirfunferencia 
-        return this.points;
-    }*/
+    }
+ 
 }

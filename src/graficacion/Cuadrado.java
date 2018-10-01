@@ -22,5 +22,10 @@ public class Cuadrado extends Figura{
         this.x3 = x3;
         this.y3 = y3;
     }
+    
+    @Override
+    public void calcular(){
+    
+    }
         
 }

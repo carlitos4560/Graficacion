@@ -8,47 +8,60 @@ package graficacion;
 /**
  * @author carlitos
  */
-public class Figura {
+import java.util.ArrayList;
+public abstract class Figura {
     
-    protected int x,y;
+    protected int[] punto = new int[2];
+    protected ArrayList<int[]> puntos = new ArrayList<>();
     protected int color;
     
     public Figura(int x, int y, int color){
-        
-        this.x = x;
-        this.y = y; 
+        this.punto[0] = x;
+        this.punto[1] = y;
         this.color = color;
-    }
-    
+    }    
     /*
     * Totas las figuras rotan sin ningun problema uso de matrices 
     */    
-    public void rotacion(int grado){
+    public abstract void calcular();
+    
+    public void pintar(){
+        for(int[] p: this.puntos){
+            Lienzo.canvas.setRGB(p[0], p[1], this.color);
+        }
+    }
+    public void cambiarColor(int c){
+        this.color = c;
+        pintar();
+    }
+    
+    public void rotacion(double theta){
         // este algoritmo ya lo tengo implementado en el otro git la idea es reusar
-        int vector [] = new int[2];
-        vector[0]= (int)Math.cos(grado)- 1;
-        vector[1]= 1 + (int)Math.sin(grado);
+        for(int[] p:this.puntos){
+            double rad = Math.toRadians(theta);
+            double c_x = (double)p[0], c_y = (double)p[1];      
+            p[0] = (int)((c_x * Math.cos(rad)) - (c_y * Math.sin(rad)));
+            p[1] = (int)((c_x * Math.sin(rad)) + (c_y * Math.cos(rad)));
+        }
     }
     
     /*
     * Totas las figuras se trasladan asiendo uso de matrices [][]A *x y
     */
-    public void traslacion(int t){
-        
-        int []vector = new int[2];
-        vector[0] = this.x + t;
-        vector[1] = this.y + t;
+    public void traslacion(int x, int y){        
+        for(int[] p:this.puntos){
+            p[0] += x;
+            p[0] += y;
+        }
     }
     
     /*
     * Totas la transformacion se hace por matrices igual [][]A *x y
     */
-    public void transformacion(int x){
-        
-        int [] vector = new int[3];
-        vector [0]= this.x * this.x;
-        vector [1]= this.y * this.y;;
-        vector [2]=1;
- 
+    public void transformacion(int x, int y ){
+        for(int[] p:this.puntos){
+            p[0] *= x;
+            p[0] *= y;
+        }
    }
 }

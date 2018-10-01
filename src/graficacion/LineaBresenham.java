@@ -11,72 +11,22 @@ package graficacion;
  */
 public class LineaBresenham extends Figura{
     
-    protected int x1, y1;
+    protected int[] punto1 = new int[2];
     
     public LineaBresenham(int x, int y, int x1, int y1, int color){
         super(x,y, color);
-        this.x1 = x1;
-        this.y1 = y1;
+        this.punto1[0]= x;
+        this.punto1[1]= y;
     }
     
-    public void dibujar(){
-    }
-    /*
-    private Point2D point1;
-    private Point2D point2;
-    private ArrayList<Point2D> points;
-    private int distands;
-    //private ArrayList<Point2D> proyectionPoints;
-    public LineBresemhan(Point2D point1,Point2D point2)
-    {
-        this.point1 = point1;
-        this.point2 = point2;
-        this.points = new ArrayList<>() ;
-        this.distands = distands(point1,point2);
-    }
-    public void recalcular(Point2D point1,Point2D point2){
-        this.point1 = point1;
-        this.point2 = point2;
-        this.points.clear();
-        drawLine();
-    }
-    public Point2D getPoint1(){
-        return point1;
-    }
-    
-    public Point2D getPoint2(){
-        return point2;
-    }
-    public void setPoint12(Point2D p1,Point2D p2){
-        this.point1 = p1;
-        this.point2 = p2;
-    }
-    
-    public void scaleAmpliacion(int n){
-        this.points.clear();
-        if(n > 0){
-            this.point2.scaleAmplia(n);
-            drawLine();
-        }
-        else{
-            if(n!=0){
-                n = Math.abs(n);
-                // Point2D aux = this.point2;
-                this.point2.scaleReduce(n);
-                System.out.println(this.point2.getX()+"  " +this.point2.getY());
-               // this.point2 = new Point2D(aux.getX() - this.point2.getX(),aux.getY() - this.point2.getY());
-                drawLine();
-            }
-        }
-        
-    }
-    
-    public void drawLine() {
+    @Override
+    public void calcular(){
         // delta of exact value and rounded value of the dependent variable
-        int x1 = point1.getX(); 
-        int y1 = point1.getY();
-        int x2 = point2.getX();
-        int y2 = point2.getY();
+        int []aux = new int[2];
+        int x1 = super.punto[0]; 
+        int y1 = super.punto[1];
+        int x2 = punto1[0];
+        int y2 = punto1[1];
         
         int d = 0;
  
@@ -94,9 +44,10 @@ public class LineaBresenham extends Figura{
  
         if (dx >= dy) {
             while (true) {
-                points.add(new Point2D(x,y));
-                
-                //System.out.println(x+"  "+y);
+                aux = new int[2];
+                aux[0] = x;
+                aux[1] = y;
+                super.puntos.add(aux);
                 if (x == x2)
                     break;
                 x += ix;
@@ -108,7 +59,10 @@ public class LineaBresenham extends Figura{
             }
         } else {
             while (true) {
-                points.add(new Point2D(x,y));
+                aux = new int[2];
+                aux[0] = x;
+                aux[1] = y;
+                super.puntos.add(aux);
                 if (y == y2)
                     break;
                 y += iy;
@@ -120,5 +74,4 @@ public class LineaBresenham extends Figura{
             }
         }
     }
-    */
 }
