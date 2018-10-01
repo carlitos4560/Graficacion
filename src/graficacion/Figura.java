@@ -34,7 +34,9 @@ public abstract class Figura {
         this.color = c;
         pintar();
     }
-    
+    public ArrayList<int[]> getPuntos(){
+        return this.puntos;
+    }
     public void rotacion(double theta){
         // este algoritmo ya lo tengo implementado en el otro git la idea es reusar
         for(int[] p:this.puntos){

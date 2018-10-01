@@ -1,9 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package graficacion;
+
+import java.util.ArrayList;
 
 /**
  *
@@ -25,7 +22,27 @@ public class Cuadrado extends Figura{
     
     @Override
     public void calcular(){
-    
+        Figura linea1 = new LineaDDA(super.punto[0],super.punto[1],x1,y1,color);
+        linea1.calcular();
+        puntos(linea1.getPuntos());
+        
+        Figura linea2 = new LineaDDA(x1,y1,x2,y2,color);
+        linea2.calcular();
+        puntos(linea2.getPuntos());
+        
+        Figura linea3 = new LineaDDA(x2,y2,super.punto[0],super.punto[1],color);
+        
+        linea3.calcular();
+        puntos(linea3.getPuntos());
+        
+        Figura linea4 = new LineaDDA(x2,y2,super.punto[0],super.punto[1],color);
+        linea4.calcular();
+        puntos(linea4.getPuntos());
+    }
+    public void puntos(ArrayList<int[]> p){
+        for(int[] pl: p){
+            super.puntos.add(pl);
+        }
     }
         
 }

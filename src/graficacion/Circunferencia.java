@@ -74,5 +74,10 @@ public class Circunferencia extends Figura{
         }        
         // claculo de todos los puntos de la cirfunferencia 
     }
+    
+    public void setRadio(int r ){
+        this.radio = r;
+        calcular();
+    }
  
 }
