@@ -72,15 +72,15 @@ public class Triangulo extends Figura{
                             puntosIntersectos.add(aux);}
                         }
                     }
-                if(puntosIntersectos.size()==2){
+            }
+            if(puntosIntersectos.size()==2){
                     punto1=puntosIntersectos.get(0);
                     punto2=puntosIntersectos.get(1);
                     linea=new LineaDDA(punto1[0]+1,punto1[1],punto2[0]-1,punto2[1],color);
                     linea.calcular();
                     linea.pintar();
                 }
-                                     
-            }
+            puntosIntersectos.clear();
         }
     }   
 }
