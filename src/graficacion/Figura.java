@@ -72,4 +72,32 @@ public abstract class Figura {
             res=true;
         return res;
     }
+            
+    public void rellenar (int color, int ancho, int alto){
+        int[] punto1=new int [2];
+        int[] punto2=new int [2];
+        int[] punto=new int [2];
+        ArrayList<int[]> puntosIntersectos=new ArrayList<int []>();
+        int[] aux=new int [2];
+        Figura linea;
+        for(int x=0;x<ancho;x++){
+            for(int y=0;y<alto;y++){
+                aux[0]=x;
+                aux[1]=y;
+                if(perteneceALinea(aux)){
+                    punto[0]=x;
+                    punto[1]=y;
+                    puntosIntersectos.add(aux);}
+                   
+            if(puntosIntersectos.size()==2){
+                    punto1=puntosIntersectos.get(0);
+                    punto2=puntosIntersectos.get(1);
+                    linea=new LineaDDA(punto1[0]+1,punto1[1],punto2[0]-1,punto2[1],color);
+                    linea.calcular();
+                    linea.pintar();
+                }
+            puntosIntersectos.clear();
+            }
+        }
+    }   
 }

@@ -9,11 +9,6 @@ import java.util.ArrayList;
 public class Cuadrado extends Figura{
     
     private final int x1, y1, x2, y2, x3, y3 ;
-    //requiero utilizar los dats de las lineas por ello variables locales
-    Figura linea1;
-    Figura linea2;
-    Figura linea3;
-    Figura linea4;
     public Cuadrado(int x,int y, int x1, int y1, int x2, int y2, int x3, int y3, int color){
         super(x, y, color);
         this.x1 = x1;
@@ -27,20 +22,19 @@ public class Cuadrado extends Figura{
     
     @Override
     public void calcular(){
-        linea1 = new LineaDDA(super.punto[0],super.punto[1],x1,y1,color);
+        Figura linea1 = new LineaDDA(super.punto[0],super.punto[1],x1,y1,color);
         linea1.calcular();
         puntos(linea1.getPuntos());
         
-        linea2 = new LineaDDA(x1,y1,x2,y2,color);
+        Figura linea2 = new LineaDDA(x1,y1,x2,y2,color);
         linea2.calcular();
         puntos(linea2.getPuntos());
         
-        linea3 = new LineaDDA(x2,y2,super.punto[0],super.punto[1],color);
-        
+        Figura linea3 = new LineaDDA(x2,y2,super.punto[0],super.punto[1],color);
         linea3.calcular();
         puntos(linea3.getPuntos());
         
-        linea4 = new LineaDDA(x2,y2,super.punto[0],super.punto[1],color);
+        Figura linea4 = new LineaDDA(x2,y2,super.punto[0],super.punto[1],color);
         linea4.calcular();
         puntos(linea4.getPuntos());
     }
@@ -49,7 +43,7 @@ public class Cuadrado extends Figura{
             super.puntos.add(pl);
         }
     }
-    public void rellenarcuadrado (int color, int ancho, int alto){
+    /*public void rellenarcuadrado (int color, int ancho, int alto){
         int[] punto1=new int [2];
         int[] punto2=new int [2];
         int[] punto=new int [2];
@@ -92,5 +86,5 @@ public class Cuadrado extends Figura{
                  }
                 puntosIntersectos.clear();;
             }
-    }    
+    } */   
 }
