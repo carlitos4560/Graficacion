@@ -66,4 +66,10 @@ public abstract class Figura {
             p[0] *= y;
         }
    }
+        public boolean perteneceALinea(int[]punto){
+        boolean res=false;
+        if(puntos.contains(punto))
+            res=true;
+        return res;
+    }
 }

@@ -5,6 +5,8 @@
  */
 package graficacion;
 
+import java.util.Stack;
+
 /**
  *
  * @author carlitos
@@ -79,5 +81,9 @@ public class Circunferencia extends Figura{
         this.radio = r;
         calcular();
     }
- 
+public void rellenarCirculo  (int[] pixelinterior, int color){
+    //asumiendo que int x,y son el radio aplicamos el relleno por inundacion
+    Stack <int[]> semillas = new Stack<int[]>();
+    
+}
 }
