@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.Graphics2D;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -23,14 +24,19 @@ import java.util.Stack;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Lienzo extends Canvas implements MouseListener, MouseMotionListener{
+public class Lienzo extends Canvas implements MouseListener,MouseMotionListener{
 
     public static BufferedImage canvas;    
     private Color colorFound;
-    
+    int x;
+    int y;
+    int xf;
+    int yf;
     public Lienzo()
     {
-        setBackground(Color.black);  
+        setBackground(Color.black);
+        
+        addMouseListener(this);
         }
    //*******************************************************************************
     public void buffer(int height,int width){
@@ -51,20 +57,24 @@ public class Lienzo extends Canvas implements MouseListener, MouseMotionListener
         
         repaint();
     }
-
+    
     @Override
     public void mouseClicked(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        x=e.getX();
+        y=e.getY();
+        System.out.println(x+", "+y);
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        xf=e.getX();
+        yf=e.getY();
+        System.out.println(xf+" , "+yf);
     }
 
     @Override
@@ -86,5 +96,4 @@ public class Lienzo extends Canvas implements MouseListener, MouseMotionListener
     public void mouseMoved(MouseEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
 }
