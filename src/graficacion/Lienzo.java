@@ -27,8 +27,8 @@ public class Lienzo extends Canvas{
     
     public Lienzo()
     {
-        setBackground(Color.WHITE);     
-    }
+        setBackground(Color.WHITE);  
+        }
    //*******************************************************************************
     public void buffer(int height,int width){
          this.colorFound = Color.BLACK;    
@@ -42,7 +42,7 @@ public class Lienzo extends Canvas{
     //*******************************************************************************
     public void paint(Graphics g){
         super.paint(g);
-        //g.drawString("Lienzo de Dibujo Canvas",40,40);
+        g.drawString("Lienzo de Dibujo Canvas",40,40);
         Graphics2D g2 = (Graphics2D)g;
         g2.drawImage(canvas,null,null);   
         
