@@ -19,7 +19,8 @@ public class Graficacion {
      * Universidad: Mayor de San Simon
      */ 
     public static void main(String[] args) {
-        // TODO code application logic here
+       Lienzo lienzo = new Lienzo();
+       lienzo.buffer(400,600);
     }
     
 }

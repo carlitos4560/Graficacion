@@ -20,9 +20,12 @@ public class NewJFrame extends javax.swing.JFrame {
         this.setTitle("Graficador");
         lienzo = new Lienzo();
         lienzo.setBounds(0, 0, 600  , 600);
+        //lienzo.buffer(getHeight(), getWidth());
         this.add(lienzo);
         
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -191,7 +194,13 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void crearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearActionPerformed
-        // TODO add your handling code here:
+        /* creacion de cada figura de acuerdo a lo que se llene
+        if(evt.getActionCommand().equals("circulo")){
+            figura = new Figura()
+        }*/
+        String vals=""+jComboBox1.getSelectedItem();
+        lienzo.figura(vals);
+        
     }//GEN-LAST:event_crearActionPerformed
 
     /**
