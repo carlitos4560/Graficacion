@@ -5,6 +5,8 @@
  */
 package graficacion;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author user
@@ -35,8 +37,8 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        figura = new javax.swing.JComboBox<>();
+        colorLinea = new javax.swing.JComboBox<>();
         jComboBox3 = new javax.swing.JComboBox<>();
         crear = new javax.swing.JButton();
         rellenar = new javax.swing.JButton();
@@ -55,16 +57,21 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setText("RELLENAR");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LINEA", "TRIANGULO", "CUADRADO", "CIRCULO" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        figura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LINEA", "TRIANGULO", "CUADRADO", "CIRCULO" }));
+        figura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                figuraActionPerformed(evt);
             }
         });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BLANCO", "AMARILLO", "ROJO", "NARANJA" }));
+        colorLinea.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BLANCO", "AMARILLO", "ROJO", "MAGENTA" }));
+        colorLinea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                colorLineaActionPerformed(evt);
+            }
+        });
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BLANCO", "AMARILLO", "ROJO", "NARANJA" }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BLANCO", "AMARILLO", "ROJO", "MAGENTA" }));
         jComboBox3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox3ActionPerformed(evt);
@@ -117,7 +124,7 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(colorLinea, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(30, 30, 30)
                                         .addComponent(crear)))
@@ -128,7 +135,7 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                             .addGap(10, 10, 10)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(figura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
@@ -148,11 +155,11 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(3, 3, 3)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(figura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(colorLinea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(crear)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -174,9 +181,9 @@ public class NewJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void figuraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_figuraActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_figuraActionPerformed
 
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
         // TODO add your handling code here:
@@ -184,6 +191,8 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void rellenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rellenarActionPerformed
         // TODO add your handling code here:
+        int color= defineColor(colorLinea.getSelectedItem().toString());
+        
     }//GEN-LAST:event_rellenarActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -192,7 +201,16 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void crearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearActionPerformed
         // TODO add your handling code here:
+        String fig=  figura.getSelectedItem().toString();
+        int color= defineColor(colorLinea.getSelectedItem().toString());
+        JOptionPane.showMessageDialog(rootPane, "1. para crear lineas arrastre el mouse del punto inicio al punto final\n2. para crear circulo arrastre el m"
+                + "mouse del centro de la circunferencia al limite del radio\n3............");
+        
     }//GEN-LAST:event_crearActionPerformed
+
+    private void colorLineaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_colorLineaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_colorLineaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -231,11 +249,11 @@ public class NewJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Canvas canvas1;
+    private javax.swing.JComboBox<String> colorLinea;
     private javax.swing.JButton crear;
+    private javax.swing.JComboBox<String> figura;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -244,4 +262,25 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JButton rellenar;
     // End of variables declaration//GEN-END:variables
+private int defineColor (String color){
+    int res=0;
+    switch (color){
+        case "BLANCO": 
+            res= 16777215;
+            break;
+        case "AMARILLO":
+            res= 16776960;
+            break;
+        case "ROJO":
+            res= 16711680;
+            break;
+        case "MAGENTA":
+            res= 16711935;
+            break;
+        default:
+            System.out.println("elija color");
+            break;
+    }
+    return res;
+}
 }
