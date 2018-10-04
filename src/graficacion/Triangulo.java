@@ -45,6 +45,13 @@ public class Triangulo extends Figura{
         }
     }
     
+    public void scalar(int x, int y, int x1, int y1){
+        this.x1 = x;
+        this.y1 = y;
+        this.x1 = x1;
+        this.y1 = 1;
+    }
+    
    /* public void rellenarTriangulo (int color, int ancho, int alto){
         int[] punto1=new int [2];
         int[] punto2=new int [2];

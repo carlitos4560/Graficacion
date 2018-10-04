@@ -59,5 +59,9 @@ public class LineaDDA extends Figura {
             }
         }
     }
+    public void scalar(int x, int y){
+        this.punto1[0] = x;
+        this.punto1[1] = y;
+    }
 
 }

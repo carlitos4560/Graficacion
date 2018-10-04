@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 public class Cuadrado extends Figura{
     
-    private final int x1, y1, x2, y2, x3, y3 ;
+    private  int x1, y1, x2, y2, x3, y3 ;
     public Cuadrado(int x,int y, int x1, int y1, int x2, int y2, int x3, int y3, int color){
         super(x, y, color);
         this.x1 = x1;
@@ -43,6 +43,16 @@ public class Cuadrado extends Figura{
             super.puntos.add(pl);
         }
     }
+    
+    public void scalar(int x, int y, int x1, int y1,int x2, int y2){
+        this.x1 = x;
+        this.y1 = y;
+        this.x1 = x1;
+        this.y1 = 1;
+        this.x2 = x2;
+        this.y2 = y2;
+    }
+    
     /*public void rellenarcuadrado (int color, int ancho, int alto){
         int[] punto1=new int [2];
         int[] punto2=new int [2];

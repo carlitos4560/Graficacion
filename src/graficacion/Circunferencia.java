@@ -81,9 +81,15 @@ public class Circunferencia extends Figura{
         this.radio = r;
         calcular();
     }
-public void rellenarCirculo  (int[] pixelinterior, int color){
-    //asumiendo que int x,y son el radio aplicamos el relleno por inundacion
-    Stack <int[]> semillas = new Stack<int[]>();
     
-}
+    public void scalar(int x, int y){
+        super.punto[0] = x;
+        super.punto[1] = y;
+    }
+    
+    public void rellenarCirculo  (int[] pixelinterior, int color){
+        //asumiendo que int x,y son el radio aplicamos el relleno por inundacion
+        Stack <int[]> semillas = new Stack<int[]>();
+
+    }
 }

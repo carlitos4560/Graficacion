@@ -72,6 +72,10 @@ public abstract class Figura {
             res=true;
         return res;
     }
+        
+    public void limpiarPuntos(){
+        this.puntos.clear();
+    }
             
     public void rellenar (int color, int ancho, int alto){
         int[] punto1=new int [2];
@@ -89,7 +93,7 @@ public abstract class Figura {
                     punto[1]=y;
                     puntosIntersectos.add(aux);}
                    
-            if(puntosIntersectos.size()==2){
+            if(puntosIntersectos.size() == 2){
                     punto1=puntosIntersectos.get(0);
                     punto2=puntosIntersectos.get(1);
                     linea=new LineaDDA(punto1[0]+1,punto1[1],punto2[0]-1,punto2[1],color);
