@@ -15,8 +15,8 @@ public class LineaBresenham extends Figura{
     
     public LineaBresenham(int x, int y, int x1, int y1, int color){
         super(x,y, color);
-        this.punto1[0]= x;
-        this.punto1[1]= y;
+        this.punto1[0]= x1;
+        this.punto1[1]= y1;
     }
     
     @Override
@@ -48,6 +48,7 @@ public class LineaBresenham extends Figura{
                 aux[0] = x;
                 aux[1] = y;
                 super.puntos.add(aux);
+                System.out.println(aux[0]+", "+aux[1]);
                 if (x == x2)
                     break;
                 x += ix;

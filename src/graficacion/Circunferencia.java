@@ -20,7 +20,7 @@ public class Circunferencia extends Figura{
         this.radio = radio;
     }
     public Circunferencia(){
-        super(50,50,0);
+        super(50,50,150);
         this.radio = 25;
     }
  

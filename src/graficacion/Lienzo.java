@@ -32,19 +32,53 @@ public class Lienzo extends Canvas implements MouseListener,MouseMotionListener{
     int y;
     int xf;
     int yf;
+    Figura fig;
     public Lienzo()
     {
         setBackground(Color.black);
         
         addMouseListener(this);
+        buffer(600,600);
         }
    //*******************************************************************************
     public void buffer(int height,int width){
-         this.colorFound = Color.BLACK;    
+         this.colorFound = Color.white;    
          this.canvas = new BufferedImage(height,width, BufferedImage.TYPE_INT_ARGB);
+         fig=new Circunferencia();
+         fig.calcular();
+         drawnPoint(fig.getPuntos(),Color.blue);
+         repaint();
         // heignt = alto
         // width = ancho 
         //llamada a metodos para que se pinten
+        /*switch (f){
+            case "LINEA":
+               fig= new LineaBresenham(x,y,xf,yf,c);
+               fig.calcular();
+               
+               fig.pintar();
+               break;
+            case  "TRIANGULO":
+                fig=new Triangulo (50,50,100,100,150,150,c);
+               
+                fig.calcular();
+                fig.pintar();
+                break;
+            case "CUADRADO":
+                fig=new Cuadrado(50,50,100,100,80,80,60,60,c);
+                fig.pintar();
+                fig.calcular();
+                break;
+            case "CIRCULO":
+                int radio=60;
+                fig=new Circunferencia(radio,x,y,c);
+                fig.pintar();
+                break;
+            default:
+                System.out.print("error "+ f);
+                break;
+                
+        }*/
         Circunferencia circunferencia = new Circunferencia();
         circunferencia.pintar();
      }
@@ -55,7 +89,7 @@ public class Lienzo extends Canvas implements MouseListener,MouseMotionListener{
         Graphics2D g2 = (Graphics2D)g;
         g2.drawImage(canvas,null,null);   
         
-        repaint();
+       // repaint();
     }
     
     @Override
@@ -79,21 +113,31 @@ public class Lienzo extends Canvas implements MouseListener,MouseMotionListener{
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+        public void drawnPoint(ArrayList<int []> points,Color c){
+        int color=c.getRGB();
+            for(int[] p :points){
+           this.canvas.setRGB(p[0],p[1],color);
+           repaint();
+        }        
+    }    
+        
+
+    
 }
