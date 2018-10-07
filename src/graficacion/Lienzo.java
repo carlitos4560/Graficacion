@@ -28,18 +28,11 @@ public class Lienzo extends Canvas implements MouseListener,MouseMotionListener{
 
     public static BufferedImage canvas;    
     private Color colorFound;
-    int x1;
-    int y1;
-    int x2;
-    int y2;
-    int x3;
-    int y3;
-    int x4;
-    int y4;
-    
-    private ArrayList<Figura> figuras;
-    private String figura;
-    private int[] puntos;
+    int x;
+    int y;
+    int xf;
+    int yf;
+    Figura fig;
     public Lienzo()
     {
         figuras = null;
@@ -47,15 +40,54 @@ public class Lienzo extends Canvas implements MouseListener,MouseMotionListener{
         addMouseListener(this);
     }
    /*******************************************************************************
+        buffer(600,600);
+        }
+   //*******************************************************************************
     public void buffer(int height,int width){
-         this.colorFound = Color.BLACK;    
+         this.colorFound = Color.white;    
          this.canvas = new BufferedImage(height,width, BufferedImage.TYPE_INT_ARGB);
+         fig=new Circunferencia();
+         fig.calcular();
+         drawnPoint(fig.getPuntos(),Color.blue);
+         repaint();
         // heignt = alto
         // width = ancho 
         //llamada a metodos para que se pinten
         Figura f = new Circunferencia(30, 50, 50, 150);
         f.pintar();
-     }*/
+     }
+     */
+        /*switch (f){
+            case "LINEA":
+               fig= new LineaBresenham(x,y,xf,yf,c);
+               fig.calcular();
+               
+               fig.pintar();
+               break;
+            case  "TRIANGULO":
+                fig=new Triangulo (50,50,100,100,150,150,c);
+               
+                fig.calcular();
+                fig.pintar();
+                break;
+            case "CUADRADO":
+                fig=new Cuadrado(50,50,100,100,80,80,60,60,c);
+                fig.pintar();
+                fig.calcular();
+                break;
+            case "CIRCULO":
+                int radio=60;
+                fig=new Circunferencia(radio,x,y,c);
+                fig.pintar();
+                break;
+            default:
+                System.out.print("error "+ f);
+                break;
+                
+        }*/
+        Circunferencia circunferencia = new Circunferencia();
+        circunferencia.pintar();
+     }
     //*******************************************************************************
     public void paint(Graphics g){
         super.paint(g);
@@ -121,13 +153,11 @@ public class Lienzo extends Canvas implements MouseListener,MouseMotionListener{
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        // cuando se suelta el mouse
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -140,4 +170,11 @@ public class Lienzo extends Canvas implements MouseListener,MouseMotionListener{
     public void mouseMoved(MouseEvent e) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+        public void drawnPoint(ArrayList<int []> points,Color c){
+        int color=c.getRGB();
+            for(int[] p :points){
+           this.canvas.setRGB(p[0],p[1],color);
+           repaint();
+        }        
+    }    
 }
