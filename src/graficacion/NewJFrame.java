@@ -399,8 +399,8 @@ private int defineColor(String color) {
         if(botonPulsado == crear){
             switch (figura) {
             case "LINEA":
-//                  lienzo.lineaDDA(color.get(colores));
-                lienzo.linea(color.get(colores));
+                  //lienzo.lineaDDA(color.get(colores));
+                lienzo.linea(color.get(colores));//
                 break;
             case "TRIANGULO":
                 lienzo.triangulo(color.get(colores));
@@ -419,10 +419,12 @@ private int defineColor(String color) {
         else{
             if(botonPulsado == jButton3){
                 lienzo.rotar(90);
+                
                 System.out.println("rotar");
             }
             else{
                 if(botonPulsado == jButton4){
+                    
                     System.out.println("trasladar");
                 }
                 else{

@@ -56,7 +56,7 @@ public class Lienzo extends Canvas {//implements MouseListener,MouseMotionListen
         figura.add(fig);
         drawnPoint(fig.getPuntos(), c);
     }
-
+    
     public void triangulo(Color c) {
         int x1 = 200;
         int y1 = 200;
@@ -106,15 +106,15 @@ public class Lienzo extends Canvas {//implements MouseListener,MouseMotionListen
         int x2 = 100;
         int y2 = 100;
         int color = c.getRGB();
-        fig = new LineaDDA(x1, y1, x2, y2, color);
-        fig.calcular();
-        figura.add(fig);
+        LineaDDA linea = new LineaDDA(x1, y1, x2, y2);
+        linea.rectaSimple2();
+        //linea.add(fig);
 //        System.out.println("linea");
-        drawnPoint(fig.getPuntos(), c);
+        drawnPoint(linea.getPuntos(), c);
     }
 
     public void rotar(int rotar) {
-        fig.rotacion(rotar);
+        this.fig.rotacion(rotar);
     }
 
     public void trasladar(int t, Color c) {
@@ -130,7 +130,7 @@ public class Lienzo extends Canvas {//implements MouseListener,MouseMotionListen
     public void pintar() {
 
     }
-
+    
     public void cambiaColor(Color c) {
         int color = c.getRGB();
         fig.cambiarColor(color);

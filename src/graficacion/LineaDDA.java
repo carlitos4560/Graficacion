@@ -4,74 +4,72 @@
  * and open the template in the editor.
  */
 package graficacion;
+
+import java.util.ArrayList;
+
 /**
  *
  * @author Carlos Roberto Esccobar Soria 
  * @author Elizabeth Cussi Lopez
  */
-public class LineaDDA extends Figura {
+public class LineaDDA {
     
-    int []punto1 = new int[2];
-    
-    public LineaDDA(int x, int y, int x1, int y1, int color){
-        
-        super(x,y,color);
-        this.punto1[0] = x1;
-        this.punto1[1] = y1;
+    ArrayList<int[]> p = new ArrayList<>();
+    int x0, y0, x1, y1;
+    public LineaDDA(int x0, int y0, int x1, int y1){
+        this.x0 = x0;
+        this.y0 = y0;
+        this.x1 = x1;
+        this.y1 = y1;
     }
-    
-    @Override
-    public void calcular(){
-    //public void calcular(int x0, int y0, int x1, int y1){
-        int dx = this.punto1[0] - super.punto[0];
-        int dy = this.punto1[1] - super.punto[1];
-        int []aux;
-        super.puntos.add(punto);
-        //System.out.println(punto[0]+ " " + punto[1]);
-       //System.out.println(punto[0]+ " " + punto[1]);
-        super.puntos.add(this.punto1);
+    public void rectaSimple2()
+    {
+        int [] puntos = new int[2];
+        int dx = x1 - x0;
+        int dy = y1 - y0;
+        puntos[0] = x0;
+        puntos[1] = x1;
+        p.add(puntos);
+        //g.drawLine( x0, y0, x0, y0);
         if (Math.abs(dx) > Math.abs(dy)) {          // pendiente < 1
+           
             float m = (float) dy / (float) dx;
-            float b = super.punto[1] - m*super.punto[0];
-            aux = new int[2];
-            aux[0] = super.punto[0]; 
-            aux[1] = super.punto[1];
+            float b = y0 - m*x0;
             if(dx<0)
                 dx =  -1;
             else
                 dx =  1;
-            while (aux[0] != this.punto1[0]) {
-                aux[0] += dx;
-                aux[1] = Math.round(m*aux[0] + b);
+            while (x0 != x1) {
                 
-                super.puntos.add(aux);
-//                System.out.println(punto[0]+ " " + punto[1]);
-                //   g.drawLine( x0, y0, x0, y0);
+                x0 += dx;
+                y0 = Math.round(m*x0 + b);
+                puntos = new int[2];
+                puntos[0] = x0;
+                puntos[1] = x1;
+                p.add(puntos);
+                //g.drawLine( x0, y0, x0, y0);
             }
         } else
         if (dy != 0) {                              // slope >= 1
-            aux = new int[2];
-            aux[0] = super.punto[0]; 
-            aux[1] = super.punto[1];
-            
             float m = (float) dx / (float) dy;      // compute slope
-            float b = aux[0] - m*aux[1];
+            float b = x0 - m*y0;
             if(dy<0)
                 dy =  -1;
             else
                 dy =  1;
-            while (aux[1] != aux[1]) {
-                aux[1] += dy;
-                aux[0] = Math.round(m*aux[1] + b);
-                super.puntos.add(punto);
-                //System.out.println(punto[0]+ " " + punto[1]);
-                // g.drawLine( x0, y0, x0, y0);
+            while (y0 != y1) {
+                y0 += dy;
+                x0 = Math.round(m*y0 + b);
+                puntos = new int[2];
+                puntos[0] = x0;
+                puntos[1] = x1;
+                p.add(puntos);
+                //g.drawLine( x0, y0, x0, y0);
             }
         }
     }
-    public void scalar(int x, int y){
-        this.punto1[0] = x;
-        this.punto1[1] = y;
+    
+    public ArrayList<int[]> getPuntos(){
+        return p;
     }
-
 }

@@ -95,12 +95,17 @@ public abstract class Figura {
             if(puntosIntersectos.size() == 2){
                     punto1=puntosIntersectos.get(0);
                     punto2=puntosIntersectos.get(1);
-                    linea=new LineaDDA(punto1[0]+1,punto1[1],punto2[0]-1,punto2[1],color);
+                    linea=new LineaBresenham(punto1[0]+1,punto1[1],punto2[0]-1,punto2[1],color);
                     linea.calcular();
-                    //slinea.pintar();
+                    puntosPintados(linea.getPuntos());
                 }
             puntosIntersectos.clear();
             }
         }
-    }   
+    } 
+    public void puntosPintados(ArrayList<int[]> punto){
+        for(int[]p:punto){
+            this.puntos.add(p);
+        }
+    }
 }
