@@ -22,17 +22,16 @@ public class NewJFrame extends javax.swing.JFrame implements WindowListener{
      */
     Lienzo lienzo;
     public NewJFrame() {
-        initComponents();
-        setLayout(new BorderLayout());
-        //addWindowListener(this);
         this.setTitle("Graficador");
         lienzo = new Lienzo();
-       // lienzo.setBounds(0, 0, 600  , 600);
-       add(lienzo,BorderLayout.CENTER);
-       setSize(800,600);
-      // this.add(lienzo);
+        initComponents();
+        setLayout(new BorderLayout());
+        add(lienzo,BorderLayout.CENTER);
+        add(jPanel1,BorderLayout.EAST);
+        setSize(800,600);
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        addWindowListener(this);
     }
     
     
@@ -223,10 +222,10 @@ public class NewJFrame extends javax.swing.JFrame implements WindowListener{
 
     private void crearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearActionPerformed
         // TODO add your handling code here:
-        String fig=  figura.getSelectedItem().toString();
-        int color= defineColor(colorLinea.getSelectedItem().toString());
-        JOptionPane.showMessageDialog(rootPane, "1. para crear lineas arrastre el mouse del punto inicio al punto final\n2. para crear circulo arrastre el m"
-                + "mouse del centro de la circunferencia al limite del radio\n3............");
+//        String fig=  figura.getSelectedItem().toString();
+//        int color= defineColor(colorLinea.getSelectedItem().toString());
+//        JOptionPane.showMessageDialog(rootPane, "1. para crear lineas arrastre el mouse del punto inicio al punto final\n2. para crear circulo arrastre el m"
+//                + "mouse del centro de la circunferencia al limite del radio\n3............");
        // lienzo.buffer(600, 600, fig, color);
     }//GEN-LAST:event_crearActionPerformed
 
@@ -311,27 +310,27 @@ private int defineColor (String color){
 
     @Override
     public void windowOpened(WindowEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void windowClosing(WindowEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void windowClosed(WindowEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void windowIconified(WindowEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void windowDeiconified(WindowEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -341,6 +340,6 @@ private int defineColor (String color){
 
     @Override
     public void windowDeactivated(WindowEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

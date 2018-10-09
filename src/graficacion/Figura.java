@@ -8,6 +8,7 @@ package graficacion;
 /**
  * @author carlitos
  */
+import java.awt.Graphics;
 import java.util.ArrayList;
 public abstract class Figura {
     
@@ -25,18 +26,15 @@ public abstract class Figura {
     */    
     public abstract void calcular();
     
-    public void pintar(){
-        for(int[] p: this.puntos){
-            Lienzo.canvas.setRGB(p[0], p[1], this.color);
-        }
-    }
     public void cambiarColor(int c){
         this.color = c;
-        pintar();
+    //    pintar();
     }
+    
     public ArrayList<int[]> getPuntos(){
         return this.puntos;
     }
+    
     public void rotacion(double theta){
         // este algoritmo ya lo tengo implementado en el otro git la idea es reusar
         for(int[] p:this.puntos){
@@ -98,7 +96,7 @@ public abstract class Figura {
                     punto2=puntosIntersectos.get(1);
                     linea=new LineaDDA(punto1[0]+1,punto1[1],punto2[0]-1,punto2[1],color);
                     linea.calcular();
-                    linea.pintar();
+                    //linea.pintar();
                 }
             puntosIntersectos.clear();
             }

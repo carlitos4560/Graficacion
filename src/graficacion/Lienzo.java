@@ -24,131 +24,142 @@ import java.util.Stack;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Lienzo extends Canvas implements MouseListener,MouseMotionListener{
+    public  class Lienzo extends Canvas {//implements MouseListener,MouseMotionListener{
 
-    public static BufferedImage canvas;    
+    private static BufferedImage canvas;
     private Color colorFound;
-    int x;
-    int y;
-    int xf;
-    int yf;
+    ArrayList<Figura> figura = new ArrayList<>();
+    int x,y,xf,yf;
     Figura fig;
     public Lienzo()
     {
-        figuras = null;
-        setBackground(Color.black);        
-        addMouseListener(this);
+        setBackground(Color.BLACK);     
     }
-   /*******************************************************************************
-        buffer(600,600);
-        }
-   //*******************************************************************************
+
     public void buffer(int height,int width){
-         this.colorFound = Color.white;    
+         this.colorFound = Color.BLACK;    
          this.canvas = new BufferedImage(height,width, BufferedImage.TYPE_INT_ARGB);
-         fig=new Circunferencia();
-         fig.calcular();
-         drawnPoint(fig.getPuntos(),Color.blue);
-         repaint();
-        // heignt = alto
-        // width = ancho 
-        //llamada a metodos para que se pinten
-        Figura f = new Circunferencia(30, 50, 50, 150);
-        f.pintar();
-     }
-     */
-        /*switch (f){
-            case "LINEA":
-               fig= new LineaBresenham(x,y,xf,yf,c);
-               fig.calcular();
-               
-               fig.pintar();
-               break;
-            case  "TRIANGULO":
-                fig=new Triangulo (50,50,100,100,150,150,c);
-               
-                fig.calcular();
-                fig.pintar();
-                break;
-            case "CUADRADO":
-                fig=new Cuadrado(50,50,100,100,80,80,60,60,c);
-                fig.pintar();
-                fig.calcular();
-                break;
-            case "CIRCULO":
-                int radio=60;
-                fig=new Circunferencia(radio,x,y,c);
-                fig.pintar();
-                break;
-            default:
-                System.out.print("error "+ f);
-                break;
-                
-        }*/
-        Circunferencia circunferencia = new Circunferencia();
-        circunferencia.pintar();
-     }
-    //*******************************************************************************
-    public void paint(Graphics g){
-        super.paint(g);
-        g.drawString("Lienzo de Dibujo Canvas",40,40);
-        Graphics2D g2 = (Graphics2D)g;
-        g2.drawImage(canvas,null,null);   
-        repaint();
+         linea(Color.BLUE);
+         ciruclo(Color.RED);
+         triangulo(Color.CYAN);
+         rectangulo(Color.BLUE);
+    }
+    public void ciruclo(Color c){
+        int radio = 60;
+        int xc = 50;
+        int yc = 50;
+        int color = c.getRGB();
+        fig = new Circunferencia(radio,xc,yc,color);
+        fig.calcular();
+        figura.add(fig);
+        drawnPoint(fig.getPuntos(),Color.RED);
     }
     
-    public void figura(String figura){
-        this.figura = figura;
-        System.out.println(this.figura);
+    public void triangulo(Color c){
+        int x1 = 50;
+        int y1 = 50;
+        int x2 = 100;
+        int y2 = 100;
+        int x3 = 200;
+        int y3 = 200;
+        int color = c.getRGB();
+        fig = new Triangulo(x1,y1,x2,y2,x3,y3,color);
+        fig.calcular();
+        figura.add(fig);
+        drawnPoint(fig.getPuntos(),c);    
     }
+    
+    public void rectangulo(Color c){
+        int x1 = 50;
+        int y1 = 50;
+        int x2 = 50;
+        int y2 = 200;
+        int x3 = 200;
+        int y3 = 200;
+        int x4 = 200;
+        int y4 = 50;
+        int color = c.getRGB();
+        fig = new Cuadrado(x1,y1,x2,y2,x3,y3,x4,y4,color);
+        fig.calcular();
+        figura.add(fig);
+        drawnPoint(fig.getPuntos(),c);
+    }
+    
+    public void linea(Color c){
+        int x1= 50;
+        int y1= 50;
+        int x2= 100;
+        int y2= 100;
+        int color = c.getRGB();
+        fig = new LineaBresenham(x1,y1,x2,y2,color);
+        fig.calcular();
+        figura.add(fig);
+        drawnPoint(fig.getPuntos(),c);
+    }
+    
+    public void rotar(int rotar){
+        fig.rotacion(rotar);
+    }
+    
+    public void trasladar(){
+        
+    }
+    
+    public void transformar(int x, int y){
+        fig.transformacion(x,y);
+    }
+    
+    public void pintar(){
+        
+    }
+    
+    public void cambiaColor(Color c){
+        int color = c.getRGB();
+        fig.cambiarColor(color);
+    }
+    
+    public void paint(Graphics g){
+        super.paint(g);
+        Graphics2D g2 = (Graphics2D)g;
+        g2.drawImage(canvas,null,null);   
+    }
+   
+    
+    public void drawnPoint(ArrayList<int[]> points,Color c){
+        int color = c.getRGB();
+        for(int[] p :points){
+           if(isValid(p)) 
+            this.canvas.setRGB(p[0],p[1],color);
+           repaint();
+        }
+    }    
+        
+    public boolean isValid(int[] point){
+        if(point[0] > 0 && point[1] > 0 && point[0] < getSize().getWidth() && point[1] < getSize().getHeight() ) {
+            return true;
+        }
+        return false;
+    }
+/*
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        
+        
+    }
+
     
     @Override
     public void mousePressed(MouseEvent e) {
-        switch(this.figura){
-            case "LINEA":
-                int i=0;
-                puntos = new int[4];
-                //for(int i = 0; i < 4; i=+2){
-                    x1= e.getX();
-                    System.out.print(puntos[0]);
-                    y1= e.getY();
-                //} 
-                /*
-                Figura linea = new LineaBresenham(puntos[0],puntos[1],puntos[2],puntos[3],50);
-                linea.calcular();
-                linea.pintar();*/
-                break;
-                
-            case "CIRCUNFERENCIA":
-                puntos = new int[2];
-                puntos[1]= e.getX();
-                puntos[2]= e.getY();
-                Figura cirunferencia = new Circunferencia(50,puntos[0],puntos[1],50);
-                cirunferencia.calcular();
-                cirunferencia.pintar();
-                break;
-                
-            case "TRIANGULO":
-                break;
-                
-            case "RECTANGULO":    
-                break;
-            default:
-                break;
-        }
-
+        x=e.getX();
+        y=e.getY();
+        System.out.println(x+", "+y);
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-//        xf=e.getX();
-//        yf=e.getY();
-//        System.out.println(xf+" , "+yf);
-    }
-        
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        System.out.println(e.getX() + " " + e.getY() );
+        xf=e.getX();
+        yf=e.getY();
+        System.out.println(xf+" , "+yf);
     }
 
     @Override
@@ -163,18 +174,12 @@ public class Lienzo extends Canvas implements MouseListener,MouseMotionListener{
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-        public void drawnPoint(ArrayList<int []> points,Color c){
-        int color=c.getRGB();
-            for(int[] p :points){
-           this.canvas.setRGB(p[0],p[1],color);
-           repaint();
-        }        
-    }    
+  */ 
 }

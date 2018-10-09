@@ -18,6 +18,7 @@ public class Circunferencia extends Figura{
     public Circunferencia(int radio, int x, int y, int color){
         super(x, y, color);
         this.radio = radio;
+        
     }
     public Circunferencia(){
         super(50,50,150);
