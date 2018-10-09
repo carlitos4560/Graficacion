@@ -48,10 +48,10 @@ public abstract class Figura {
     /*
     * Totas las figuras se trasladan asiendo uso de matrices [][]A *x y
     */
-    public void traslacion(int x, int y){        
+    public void traslacion(int x){        
         for(int[] p:this.puntos){
             p[0] += x;
-            p[0] += y;
+            p[0] += x;
         }
     }
     
@@ -64,7 +64,8 @@ public abstract class Figura {
             p[0] *= y;
         }
    }
-        public boolean perteneceALinea(int[]punto){
+    
+    public boolean perteneceALinea(int[]punto){
         boolean res=false;
         if(puntos.contains(punto))
             res=true;
@@ -96,7 +97,7 @@ public abstract class Figura {
                     punto2=puntosIntersectos.get(1);
                     linea=new LineaDDA(punto1[0]+1,punto1[1],punto2[0]-1,punto2[1],color);
                     linea.calcular();
-                    //linea.pintar();
+                    //slinea.pintar();
                 }
             puntosIntersectos.clear();
             }

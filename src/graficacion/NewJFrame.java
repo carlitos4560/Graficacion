@@ -5,9 +5,16 @@
  */
 package graficacion;
 
+import com.sun.java.accessibility.util.AWTEventMonitor;
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.swing.*;
 
@@ -15,26 +22,37 @@ import javax.swing.*;
  *
  * @author user
  */
-public class NewJFrame extends javax.swing.JFrame implements WindowListener{
+public class NewJFrame extends javax.swing.JFrame implements WindowListener, MouseListener, ActionListener {
 
     /**
      * Creates new form NewJFrame
      */
     Lienzo lienzo;
+    HashMap<String, Color> color = new HashMap<>();
+
     public NewJFrame() {
         this.setTitle("Graficador");
         lienzo = new Lienzo();
         initComponents();
         setLayout(new BorderLayout());
-        add(lienzo,BorderLayout.CENTER);
-        add(jPanel1,BorderLayout.EAST);
-        setSize(800,600);
+        add(lienzo, BorderLayout.CENTER);
+        add(jPanel1, BorderLayout.EAST);
+        setSize(800, 600);
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         addWindowListener(this);
+        crear.addActionListener(this);
+        
+        jButton3.addActionListener(this);
+        jButton4.addActionListener(this);
+        rellenar.addActionListener(this);
+        
+        this.color.put("BLANCO", Color.WHITE);
+        this.color.put("AMARILLO", Color.YELLOW);
+        this.color.put("ROJO", Color.RED);
+        this.color.put("MAGENTA", Color.MAGENTA);
+        this.color.put("AZUL", Color.blue);
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -212,8 +230,8 @@ public class NewJFrame extends javax.swing.JFrame implements WindowListener{
 
     private void rellenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rellenarActionPerformed
         // TODO add your handling code here:
-        int color= defineColor(colorLinea.getSelectedItem().toString());
-        
+        int color = defineColor(colorLinea.getSelectedItem().toString());
+
     }//GEN-LAST:event_rellenarActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -226,11 +244,11 @@ public class NewJFrame extends javax.swing.JFrame implements WindowListener{
 //        int color= defineColor(colorLinea.getSelectedItem().toString());
 //        JOptionPane.showMessageDialog(rootPane, "1. para crear lineas arrastre el mouse del punto inicio al punto final\n2. para crear circulo arrastre el m"
 //                + "mouse del centro de la circunferencia al limite del radio\n3............");
-       // lienzo.buffer(600, 600, fig, color);
+        // lienzo.buffer(600, 600, fig, color);
     }//GEN-LAST:event_crearActionPerformed
 
     private void colorLineaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_colorLineaActionPerformed
-        // TODO add your handling code here:
+        // System.out.println("Hola");
     }//GEN-LAST:event_colorLineaActionPerformed
 
     /**
@@ -261,13 +279,13 @@ public class NewJFrame extends javax.swing.JFrame implements WindowListener{
         //</editor-fold>
 
         /* Create and display the form */
-        /*java.awt.EventQueue.invokeLater(new Runnable() {
+ /*java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new NewJFrame().setVisible(true);
             }
         });*/
-        NewJFrame ventana=new NewJFrame();
-        
+        NewJFrame ventana = new NewJFrame();
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -286,27 +304,27 @@ public class NewJFrame extends javax.swing.JFrame implements WindowListener{
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton rellenar;
     // End of variables declaration//GEN-END:variables
-private int defineColor (String color){
-    int res=0;
-    switch (color){
-        case "BLANCO": 
-            res= 16777215;
-            break;
-        case "AMARILLO":
-            res= 16776960;
-            break;
-        case "ROJO":
-            res= 16711680;
-            break;
-        case "MAGENTA":
-            res= 16711935;
-            break;
-        default:
-            System.out.println("elija color");
-            break;
+private int defineColor(String color) {
+        int res = 0;
+        switch (color) {
+            case "BLANCO":
+                res = 16777215;
+                break;
+            case "AMARILLO":
+                res = 16776960;
+                break;
+            case "ROJO":
+                res = 16711680;
+                break;
+            case "MAGENTA":
+                res = 16711935;
+                break;
+            default:
+                System.out.println("elija color");
+                break;
+        }
+        return res;
     }
-    return res;
-}
 
     @Override
     public void windowOpened(WindowEvent e) {
@@ -342,4 +360,78 @@ private int defineColor (String color){
     public void windowDeactivated(WindowEvent e) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String colores = colorLinea.getSelectedItem().toString();
+        String figura = this.figura.getSelectedItem().toString();
+        //System.out.println(figura);
+        String relleno = jComboBox3.getSelectedItem().toString();
+        
+        Object botonPulsado = e.getSource();
+        
+        if(botonPulsado == crear){
+            switch (figura) {
+            case "LINEA":
+//                  lienzo.lineaDDA(color.get(colores));
+                lienzo.linea(color.get(colores));
+                break;
+            case "TRIANGULO":
+                lienzo.triangulo(color.get(colores));
+                break;
+            case "CUADRADO":
+                lienzo.rectangulo(color.get(colores));
+                break;
+            case "CIRCULO":
+                lienzo.ciruclo(color.get(colores));
+                break;
+            default:
+                System.out.println("default switch");
+                break;
+            }
+        }
+        else{
+            if(botonPulsado == jButton3){
+                lienzo.rotar(90);
+                System.out.println("rotar");
+            }
+            else{
+                if(botonPulsado == jButton4){
+                    System.out.println("trasladar");
+                }
+                else{
+                    if(botonPulsado == rellenar){
+                        System.out.println("rellenar");
+                    }
+                }
+            }
+        }
+    }
+
 }
